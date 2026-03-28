@@ -13,10 +13,10 @@
       --gold: #c9ab6d;
       --border: rgba(78, 42, 132, 0.12);
       --shadow: 0 14px 34px rgba(56, 28, 95, 0.10);
+      --card-bg: rgba(255,255,255,0.92);
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -28,79 +28,97 @@
       text-rendering: optimizeLegibility;
     }
 
-    .wrap {
-      max-width: 860px;
+    .page {
+      max-width: 980px;
       margin: 0 auto;
-      padding: 20px 16px 48px;
+      padding: 18px 14px 36px;
     }
 
-    .hero {
-      background: rgba(255,255,255,0.78);
+    .top-note {
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--kellogg-purple);
+      font-weight: 700;
+      margin: 8px 0 14px;
+    }
+
+    .carousel-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.72);
       border: 1px solid rgba(255,255,255,0.75);
       box-shadow: var(--shadow);
-      border-radius: 24px;
-      padding: 44px 22px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      padding: 26px 18px 34px;
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-inner {
+      width: 100%;
+      max-width: 820px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 10px 26px rgba(78, 42, 132, 0.06);
+      padding: 28px 20px;
       text-align: center;
-      margin-top: 10px;
     }
 
     .eyebrow {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--kellogg-purple);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 12px;
     }
 
-    h1 {
-      margin: 0;
+    h1, h2 {
+      margin: 0 0 10px 0;
       color: var(--kellogg-purple-dark);
-      font-size: clamp(2rem, 7vw, 3.2rem);
-      line-height: 1.15;
       font-weight: 600;
+      line-height: 1.18;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 3rem);
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 2.05rem);
     }
 
     .divider {
       width: 84px;
       height: 2px;
-      margin: 18px auto;
+      margin: 16px auto 18px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
     }
 
-    .subtitle {
-      max-width: 680px;
+    .subtitle,
+    .lead {
       margin: 0 auto;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .section {
-      margin-top: 22px;
-      background: rgba(255,255,255,0.82);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 24px;
-      padding: 28px 18px;
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.5rem, 5vw, 2.1rem);
-      color: var(--kellogg-purple-dark);
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .section p.lead {
-      margin: 0 auto 22px;
       max-width: 700px;
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.8;
-      text-align: center;
     }
 
     .bubble-grid {
@@ -108,7 +126,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 22px;
     }
 
     .bubble {
@@ -120,7 +138,8 @@
       border: 1px solid rgba(78, 42, 132, 0.08);
       box-shadow: 0 8px 18px rgba(78, 42, 132, 0.08);
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
+      background: #f3ebfb;
     }
 
     .b1 { background: #efe8fa; }
@@ -138,18 +157,13 @@
     .b13 { background: #eee7fb; }
     .b14 { background: #f7f1ff; }
 
-    .quotes {
-      display: grid;
-      gap: 16px;
-      margin-top: 6px;
-    }
-
     .quote-card {
-      background: rgba(255,255,255,0.94);
+      background: var(--card-bg);
       border: 1px solid rgba(78, 42, 132, 0.10);
       border-radius: 20px;
-      padding: 22px 18px 20px;
+      padding: 24px 18px;
       box-shadow: 0 10px 24px rgba(78, 42, 132, 0.06);
+      text-align: left;
     }
 
     .quote-theme {
@@ -160,16 +174,17 @@
       color: var(--kellogg-purple);
       font-weight: 800;
       margin-bottom: 12px;
+      text-align: center;
     }
 
-    .quote-card blockquote {
+    blockquote {
       margin: 0;
       font-size: 1.05rem;
       line-height: 1.8;
       color: var(--ink);
     }
 
-    .quote-card blockquote::before {
+    blockquote::before {
       content: "“";
       color: rgba(78, 42, 132, 0.18);
       font-size: 2.8rem;
@@ -184,219 +199,366 @@
       font-size: 0.92rem;
       color: var(--muted);
       font-weight: 600;
-    }
-
-    .closing {
       text-align: center;
-      padding: 34px 20px;
     }
 
-    .closing p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--muted);
-    }
-
-    .signoff {
-      margin-top: 22px;
-      color: var(--kellogg-purple);
-      font-style: italic;
-      font-size: 1rem;
-    }
-
-    .top-anchor {
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--kellogg-purple);
-      color: white;
-      text-decoration: none;
+    .controls {
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      right: 8px;
+      transform: translateY(-50%);
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .controls button {
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      color: var(--kellogg-purple-dark);
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(56, 28, 95, 0.16);
+    }
+
+    .dots {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 9px;
+      margin: 16px 0 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d8cce9;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dot.active {
+      background: var(--kellogg-purple);
+      transform: scale(1.2);
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #7c718d;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      box-shadow: 0 10px 22px rgba(78, 42, 132, 0.22);
-      font-size: 1.1rem;
+      font-size: 0.86rem;
+      margin-top: 6px;
     }
 
     @media (min-width: 768px) {
-      .wrap { padding: 28px 24px 64px; }
-      .hero { padding: 64px 46px; }
-      .section { padding: 36px 30px; }
-      .quote-card { padding: 28px 24px; }
-      .quote-card blockquote { font-size: 1.18rem; }
+      .page { padding: 28px 22px 42px; }
+      .slide { padding: 36px 32px 46px; min-height: 720px; }
+      .slide-inner { padding: 42px 34px; }
+      .quote-card { padding: 30px 28px; }
+      blockquote { font-size: 1.18rem; }
+      .controls { left: 16px; right: 16px; }
+      .controls button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+      }
     }
   </style>
 </head>
-<body id="top">
-  <div class="wrap">
+<body>
+  <div class="page">
+    <div class="top-note">Kellogg EMBA • With Appreciation</div>
 
-    <section class="hero">
-      <div class="eyebrow">Kellogg EMBA • With Appreciation</div>
-      <h1>With gratitude, Robert</h1>
-      <div class="divider"></div>
-      <p class="subtitle">
-        Thank you for spending time with our EMBA class. Your visit left a lasting impression on students —
-        not only for the strategic insight you shared, but for the humility, warmth, authenticity, and humanity behind it.
-      </p>
-    </section>
+    <div class="carousel-shell" id="carousel">
+      <div class="slides" id="slides">
 
-    <section class="section">
-      <div class="eyebrow" style="text-align:center;">Themes students returned to most</div>
-      <h2>What stayed with them</h2>
-      <p class="lead">
-        Across the class feedback, students consistently described your leadership as grounded,
-        authentic, trust-based, strategic, transparent, deeply knowledgeable, mission-driven, and people-centered.
-      </p>
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="eyebrow">A Note of Appreciation</div>
+            <h1>With gratitude, Robert</h1>
+            <div class="divider"></div>
+            <p class="subtitle">
+              Thank you for spending time with our EMBA class. Your visit left a lasting impression on students —
+              not only for the strategic insight you shared, but for the humility, warmth, authenticity, and humanity behind it.
+            </p>
+          </div>
+        </section>
 
-      <div class="bubble-grid">
-        <div class="bubble b1">Trust</div>
-        <div class="bubble b2">Humility</div>
-        <div class="bubble b3">Authentic Leadership</div>
-        <div class="bubble b4">Strategy</div>
-        <div class="bubble b5">Always Learning</div>
-        <div class="bubble b6">Grounded &amp; Inspiring</div>
-        <div class="bubble b7">Care for People</div>
-        <div class="bubble b8">Functional Depth</div>
-        <div class="bubble b9">Transparency</div>
-        <div class="bubble b10">Storytelling</div>
-        <div class="bubble b11">Long-Term Thinking</div>
-        <div class="bubble b12">Mission-Driven</div>
-        <div class="bubble b13">Communication</div>
-        <div class="bubble b14">Down-to-Earth</div>
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="eyebrow">Themes students returned to most</div>
+            <h2>What stayed with them</h2>
+            <p class="lead">
+              Across the class feedback, students consistently described your leadership as grounded,
+              authentic, trust-based, strategic, transparent, deeply knowledgeable, mission-driven, and people-centered.
+            </p>
+
+            <div class="bubble-grid">
+              <div class="bubble b1">Trust</div>
+              <div class="bubble b2">Humility</div>
+              <div class="bubble b3">Authentic Leadership</div>
+              <div class="bubble b4">Strategy</div>
+              <div class="bubble b5">Always Learning</div>
+              <div class="bubble b6">Grounded &amp; Inspiring</div>
+              <div class="bubble b7">Care for People</div>
+              <div class="bubble b8">Functional Depth</div>
+              <div class="bubble b9">Transparency</div>
+              <div class="bubble b10">Storytelling</div>
+              <div class="bubble b11">Long-Term Thinking</div>
+              <div class="bubble b12">Mission-Driven</div>
+              <div class="bubble b13">Communication</div>
+              <div class="bubble b14">Down-to-Earth</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Resonance</div>
+              <blockquote>
+                Your career journey really resonated with me. It reinforced my belief that keeping on learning and never giving up is the real key to success. I left our conversation even more inspired than before.
+              </blockquote>
+              <div class="author">— Francesco, Hong Kong Cohort</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Trust &amp; Communication</div>
+              <blockquote>
+                It was clear that you have a mastery of situational communication — flexing from warmth and comfortability to difficult leadership decisions, while always meeting the audience where they are.
+              </blockquote>
+              <div class="author">— Mara St. John</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Strategy + Detail</div>
+              <blockquote>
+                I was struck by your ability to balance deep operational detail with high-level strategy. Seeing someone move seamlessly between both in the same presentation showed how valuable it is to match depth and perspective to the audience.
+              </blockquote>
+              <div class="author">— Brad Boll</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Values</div>
+              <blockquote>
+                You genuinely demonstrated a strong sense of responsibility toward your staff and their families, along with humility, positive energy, and deep knowledge of Abbott, the industry, and the ways of a CEO.
+              </blockquote>
+              <div class="author">— Diego</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Trust in Action</div>
+              <blockquote>
+                What stood out most was how highly you value trust — not because you said the word, but because it came through in your stories, your decisions, and the way you empower others. It is clear you are playing the long game.
+              </blockquote>
+              <div class="author">— Marianne</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Humility</div>
+              <blockquote>
+                What stayed with me most was seeing how the spirit of a 138-year-old company can be embodied by a grounded leader marked by humility and quiet strength.
+              </blockquote>
+              <div class="author">— Fiona</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Leadership</div>
+              <blockquote>
+                When you spoke about being responsible for 120,000 families, not just 120,000 employees, it completely reframed leadership for me. That perspective will stay with me for years.
+              </blockquote>
+              <div class="author">— Chris</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Purpose</div>
+              <blockquote>
+                I admired the way you articulated Abbott’s purpose and growth through meaningful stories.
+              </blockquote>
+              <div class="author">— Meredith</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Authenticity</div>
+              <blockquote>
+                You delivered your message in a way that was genuine and down-to-earth. You were effortlessly charismatic, relatable, and clearly yourself.
+              </blockquote>
+              <div class="author">— Raymond</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Depth of Knowledge</div>
+              <blockquote>
+                I particularly appreciated your authenticity and willingness to share your journey to the CEO seat. I also appreciated how much functional knowledge of your business you possessed. You showed that sticking with it and fully understanding the business can be far more valuable.
+              </blockquote>
+              <div class="author">— Jeremy</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Humbleness &amp; Transparency</div>
+              <blockquote>
+                It was amazing to hear from you and your journey, especially being Brazilian and working in pharma like you. Seeing you as the CEO of such a huge company act with such humbleness and transparency was inspiring.
+              </blockquote>
+              <div class="author">— Melissa</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Impact</div>
+              <blockquote>
+                Your character and strength make Abbott a business people admire and appreciate. You inspired me to look at the company not only with respect, but with genuine excitement.
+              </blockquote>
+              <div class="author">— Marcin</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="quote-card">
+              <div class="quote-theme">Groundedness at Scale</div>
+              <blockquote>
+                No matter the size of the company or organization we lead, being down-to-earth and mission-driven are key to success.
+              </blockquote>
+              <div class="author">— Sergio</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="slide-inner">
+            <div class="eyebrow">With thanks</div>
+            <h2>Your visit made a real impression</h2>
+            <div class="divider"></div>
+            <p class="lead">
+              More than anything, students came away feeling that they had seen a model of leadership that was both accomplished and deeply human — strategic without losing warmth, powerful without losing humility, and ambitious without losing purpose.
+            </p>
+            <p class="lead" style="margin-top:18px; color: var(--kellogg-purple); font-style: italic;">
+              Thank you again for your generosity with our class.
+            </p>
+          </div>
+        </section>
+
       </div>
-    </section>
 
-    <section class="section">
-      <div class="eyebrow" style="text-align:center;">Selected student reflections</div>
-      <h2>In their words</h2>
-
-      <div class="quotes">
-
-        <div class="quote-card">
-          <div class="quote-theme">Resonance</div>
-          <blockquote>
-            Your career journey really resonated with me. It reinforced my belief that keeping on learning and never giving up is the real key to success. I left our conversation even more inspired than before.
-          </blockquote>
-          <div class="author">— Francesco, Hong Kong Cohort</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Trust &amp; Communication</div>
-          <blockquote>
-            It was clear that you have a mastery of situational communication — flexing from warmth and comfortability to difficult leadership decisions, while always meeting the audience where they are.
-          </blockquote>
-          <div class="author">— Mara St. John</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Strategy + Detail</div>
-          <blockquote>
-            I was struck by your ability to balance deep operational detail with high-level strategy. Seeing someone move seamlessly between both in the same presentation showed how valuable it is to match depth and perspective to the audience.
-          </blockquote>
-          <div class="author">— Brad </div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Values</div>
-          <blockquote>
-            You genuinely demonstrated a strong sense of responsibility toward your staff and their families, along with humility, positive energy, and deep knowledge of Abbott, the industry, and the ways of a CEO.
-          </blockquote>
-          <div class="author">— Diego</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Trust in Action</div>
-          <blockquote>
-            What stood out most was how highly you value trust — not because you said the word, but because it came through in your stories, your decisions, and the way you empower others. It is clear you are playing the long game.
-          </blockquote>
-          <div class="author">— Marianne</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Humility</div>
-          <blockquote>
-            What stayed with me most was seeing how the spirit of a 138-year-old company can be embodied by a grounded leader marked by humility and quiet strength.
-          </blockquote>
-          <div class="author">— Fiona</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Leadership</div>
-          <blockquote>
-            When you spoke about being responsible for 120,000 families, not just 120,000 employees, it completely reframed leadership for me. That perspective will stay with me for years.
-          </blockquote>
-          <div class="author">— Chris</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Purpose</div>
-          <blockquote>
-            I admired the way you articulated Abbott’s purpose and growth through meaningful stories.
-          </blockquote>
-          <div class="author">— Meredith</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Authenticity</div>
-          <blockquote>
-            You delivered your message in a way that was genuine and down-to-earth. You were effortlessly charismatic, relatable, and clearly yourself.
-          </blockquote>
-          <div class="author">— Raymond</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Depth of Knowledge</div>
-          <blockquote>
-            I particularly appreciated your authenticity and willingness to share your journey to the CEO seat. I also appreciated how much functional knowledge of your business you possessed. You showed that sticking with it and fully understanding the business can be far more valuable.
-          </blockquote>
-          <div class="author">— Jeremy</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Humbleness &amp; Transparency</div>
-          <blockquote>
-            It was amazing to hear from you and your journey, especially being Brazilian and working in pharma like you. Seeing you as the CEO of such a huge company act with such humbleness and transparency was inspiring.
-          </blockquote>
-          <div class="author">— Melissa</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Impact</div>
-          <blockquote>
-            Your character and strength make Abbott a business people admire and appreciate. You inspired me to look at the company not only with respect, but with genuine excitement.
-          </blockquote>
-          <div class="author">— Marcin</div>
-        </div>
-
-        <div class="quote-card">
-          <div class="quote-theme">Groundedness at Scale</div>
-          <blockquote>
-            No matter the size of the company or organization we lead, being down-to-earth and mission-driven are key to success.
-          </blockquote>
-          <div class="author">— Sergio</div>
-        </div>
-
+      <div class="controls">
+        <button aria-label="Previous slide" onclick="prevSlide()">&#10094;</button>
+        <button aria-label="Next slide" onclick="nextSlide()">&#10095;</button>
       </div>
-    </section>
+    </div>
 
-    <section class="section closing">
-      <div class="eyebrow">With thanks</div>
-      <h2>Your visit made a real impression</h2>
-      <p>
-        More than anything, students came away feeling that they had seen a model of leadership that was both accomplished and deeply human — strategic without losing warmth, powerful without losing humility, and ambitious without losing purpose.
-      </p>
-      <div class="divider"></div>
-      <div class="signoff">Thank you again for your generosity with our class.</div>
-    </section>
-
+    <div class="dots" id="dots"></div>
+    <div class="footer-note">Swipe, tap the arrows, or use the dots to navigate.</div>
   </div>
 
-  <a class="top-anchor" href="#top" aria-label="Back to top">↑</a>
+  <script>
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    const dotsContainer = document.getElementById('dots');
+    const carousel = document.getElementById('carousel');
+    let currentSlide = 0;
+
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateCarousel() {
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    // Swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 50;
+      const diff = endX - startX;
+
+      if (diff > threshold) {
+        prevSlide();
+      } else if (diff < -threshold) {
+        nextSlide();
+      }
+    }
+  </script>
 </body>
 </html>
